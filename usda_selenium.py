@@ -184,6 +184,10 @@ class USDAscrape(object):
         return pd.DataFrame(data,columns=columns)
 
     def set_category(self):
+        '''
+        Method to call the relevant query method/parameters.
+        '''
+
         if self.category == 'Beans, Peas, and Lentils':
             self.beans_query()
 
@@ -219,9 +223,16 @@ class USDAscrape(object):
 
 
     def make_selection(self,name,value,index=None):
+        '''
+        Functionalized version of Selenium's Select class.
+        Instantiates a Select object and makes selection based on value.
+        '''
         selection = Select(self.driver.find_element_by_name(name))
         return selection.select_by_value(value)
 
+    ##############################################################
+    #                   COMMODITY QUERY METHODS                  #
+    ##############################################################
 
     def beans_query(self):
         if self.query:
